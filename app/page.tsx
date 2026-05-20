@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Word from "./components/Word";
-import { ChangeEvent,MouseEvent, useState } from "react";
+import { ChangeEvent,MouseEvent, useEffect, useState } from "react";
+import ReloadButton from "./components/ReloadButton"
 
 export default function Home() {
   const actualWord = "Paint"
@@ -14,13 +14,25 @@ export default function Home() {
   const [gameOver,setGameOver] = useState<boolean>(false)
   
 
+  useEffect(() => {
+    reset();
+  }, [])
+
+  const reset = ()=>{
+      setNumGuesses(maxNumGuesses)
+      setGuesses([])
+      setCurrentInput("")
+      setEmptyBoxes(new Array(maxNumGuesses).fill(0))
+      setGameOver(false)
+  }
+
   const handleSetOnChange = (e:ChangeEvent<HTMLInputElement>)=>{
     setCurrentInput(e.target.value)
   }
 
   const handleOnClick =(e:MouseEvent<HTMLButtonElement>)=>{
 
-      if(currentInput.trim() ==="" || numGuesses <=0){
+      if(currentInput.trim() === "" || numGuesses <=0){
         return
       }
       if(currentInput.length < 5){
@@ -32,7 +44,7 @@ export default function Home() {
         return 
       }
 
-      if(currentInput === actualWord){
+      if(currentInput.trim().toLowerCase() === actualWord.toLowerCase()){
         alert("You won!")
         setGameOver(true)
       }
@@ -43,6 +55,8 @@ export default function Home() {
       setCurrentInput("")
       setEmptyBoxes(new Array(newNumGuessesAmount).fill(0))
   }
+
+
 
   return (
       <div>
@@ -57,20 +71,19 @@ export default function Home() {
             {/* show the remainder of the objects*/}
             {emptyBoxes.map((x,i)=><Word key={"guess-"+i} word="" actualWord=""/>)}
           </div>
-          <div>{/*start*/}
+          <div>
+            {/*start*/}
               <div className="d-flex">
                 <input onChange={handleSetOnChange} />
-                <button onClick={handleOnClick} disabled={gameOver}> Submit</button>
+                {
+                  gameOver? <ReloadButton reset={reset}/>: <button onClick={handleOnClick} disabled={gameOver}>Submit</button>
+                }
+                
               </div>
             {/* end */}
           </div>
          
         </div>
-      
-        
-        
-       
-       
       </div>
   );
 }
