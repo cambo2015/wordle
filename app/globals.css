@@ -19,6 +19,7 @@
   }
 }
 
+/* basic elements */
 body {
   background: var(--background);
   color: var(--foreground);
@@ -43,6 +44,7 @@ button{
 
 }
 
+/* utility classes */
 .d-flex{
   display:flex;
 }
@@ -54,6 +56,8 @@ button{
   flex-direction: row;
 }
 
+
+/* letter component classes */
 .letter{
   display: flex;
   width:50px;
@@ -85,6 +89,7 @@ button{
   background-color: gray;
 }
 
+/* home page */
 #guesses-container{
   width:100vw;
   height:80vh;
@@ -92,6 +97,14 @@ button{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+#top-bar{
+  width: 100%;
+  background-color: green !important;
+  padding:8px;
+  font-weight: bold;
+  font-size: 20pt;
 }
 
 .chip{
@@ -105,11 +118,5 @@ button{
   text-align: center;
 }
 
-#top-bar{
-  width: 100%;
-  background-color: green !important;
-  padding:8px;
-  font-weight: bold;
-  font-size: 20pt;
-}
+
 /*END*/
