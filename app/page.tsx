@@ -4,6 +4,7 @@ import Word from "./components/Word";
 import { ChangeEvent,MouseEvent, useEffect, useState } from "react";
 import ReloadButton from "./components/ReloadButton"
 import { getWord } from "./words";
+import { initializeSounds } from "./audio";
 
 export default function Home() {
   
@@ -35,8 +36,7 @@ export default function Home() {
     setCurrentInput(e.target.value)
   }
 
-  const handleOnClick =(e:MouseEvent<HTMLButtonElement>)=>{
-
+  const handleOnClick =async (e:MouseEvent<HTMLButtonElement>)=>{
 
     const cw = currentInput.trim().toLowerCase()
     const aw = actualWord.trim().toLowerCase()
@@ -71,6 +71,10 @@ export default function Home() {
       setEmptyBoxes(new Array(newNumGuessesAmount).fill(0))
   }
 
+  const handleOnFocus= async()=>{
+      await initializeSounds()
+  }
+
   return (
       <div>
         <div id="top-bar">
@@ -89,7 +93,7 @@ export default function Home() {
               <div id="input-container"  >
                 <p>Enter a 5 letter word below:</p>
                 <div className="d-flex">
-                    <input onChange={handleSetOnChange} />
+                    <input onChange={handleSetOnChange} onFocus={handleOnFocus}/>
                     {
                       gameOver? <ReloadButton reset={reset}/>: <button onClick={handleOnClick} disabled={gameOver}>Submit</button>
                     }

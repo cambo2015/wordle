@@ -1,4 +1,6 @@
+import { useEffect } from "react"
 import Letter, { LetterStatus } from "./Letter"
+import { initializeSounds } from "../audio"
 
 type WordProps = {
     word:String,
@@ -7,6 +9,7 @@ type WordProps = {
 
 export default function Word({word="",actualWord=""}:WordProps){
 
+   
     // this prints out an empty word (single row)
     if((word === "" || word === '') && (actualWord === "" || actualWord === '')){
         const emptyArr = new Array(5).fill(0)
@@ -25,6 +28,7 @@ export default function Word({word="",actualWord=""}:WordProps){
     const actualArr = actualWord.split("").map(x=>x.toUpperCase())
     return <div className="flex">
     {wordArr.map((x,i)=>{
+
         let status;
         if(actualArr[i] == x){ //if match 
             status = LetterStatus.Correct
