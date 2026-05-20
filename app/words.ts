@@ -21,7 +21,56 @@ export const fiveLetterWords:string[] = [
   "globe","glory","grace","grade","grand","grant","grass","great","group","guard"
 ];
 
+
+const key:string = "usedWords"
+
+/**
+ * get a random word if it has not already used
+ */
 export const getWord = ()=>{
-  const index = Math.floor(Math.random()* fiveLetterWords.length )
-      return fiveLetterWords[index]
+  const previousWords:string[] =  getPreviousWords()//is a object
+  console.log(previousWords)
+
+  let index = Math.floor(Math.random()* fiveLetterWords.length )
+  let chosenWord =  fiveLetterWords[index]
+  if(!Array.isArray(previousWords)){ //add to previous words
+    addToPreviousWords(chosenWord)
+    return chosenWord
+  }
+ if(Array.isArray(previousWords) ){
+      while(previousWords.includes(chosenWord)){
+      index = Math.floor(Math.random()* fiveLetterWords.length )
+      chosenWord =  fiveLetterWords[index]
+      console.log("infinate loop")
+    }
+    addToPreviousWords(chosenWord)
+  }
+  return chosenWord
+  
+}
+
+/***
+ * Gets previous words used from local storage
+ */
+export const getPreviousWords = ()=>{
+  const item = localStorage.getItem(key)
+
+  if(item){
+    const {words}  = JSON.parse(item)
+    return words;
+  }
+  return []
+}
+
+/***
+ * Adds to previous words in localstorage
+ */
+export const addToPreviousWords = (newWord:string)=>{
+  const previousWords = getPreviousWords()
+  
+  const obj = {
+    words: [...previousWords,newWord]
+  }
+
+  localStorage.setItem(key,JSON.stringify(obj))
 }

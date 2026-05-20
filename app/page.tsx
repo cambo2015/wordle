@@ -10,7 +10,7 @@ export default function Home() {
   
 
   const maxNumGuesses = 5
-  const [actualWord,setActualWord] = useState<string>(getWord())
+  const [actualWord,setActualWord] = useState<string>("")
   const [numGuesses,setNumGuesses] = useState<number>(maxNumGuesses)
   const [guesses,setGuesses] = useState<string[]>([])
   const [currentInput,setCurrentInput] = useState<string>("")
@@ -64,16 +64,12 @@ export default function Home() {
         setGameOver(true)
       }
 
-      
-
       const newNumGuessesAmount = numGuesses-1
       setGuesses([...guesses,currentInput])
       setNumGuesses(newNumGuessesAmount)
       setCurrentInput("")
       setEmptyBoxes(new Array(newNumGuessesAmount).fill(0))
   }
-
-
 
   return (
       <div>
