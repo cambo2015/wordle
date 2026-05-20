@@ -118,5 +118,9 @@ button{
   text-align: center;
 }
 
+#input-container{
+  margin-top: 0.5rem;
+}
+
 
 /*END*/

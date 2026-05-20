@@ -3,10 +3,14 @@
 import Word from "./components/Word";
 import { ChangeEvent,MouseEvent, useEffect, useState } from "react";
 import ReloadButton from "./components/ReloadButton"
+import { getWord } from "./words";
 
 export default function Home() {
-  const actualWord = "Paint"
+  
+  
+
   const maxNumGuesses = 5
+  const [actualWord,setActualWord] = useState<string>(getWord())
   const [numGuesses,setNumGuesses] = useState<number>(maxNumGuesses)
   const [guesses,setGuesses] = useState<string[]>([])
   const [currentInput,setCurrentInput] = useState<string>("")
@@ -24,6 +28,7 @@ export default function Home() {
       setCurrentInput("")
       setEmptyBoxes(new Array(maxNumGuesses).fill(0))
       setGameOver(false)
+      setActualWord(getWord())
   }
 
   const handleSetOnChange = (e:ChangeEvent<HTMLInputElement>)=>{
@@ -73,12 +78,15 @@ export default function Home() {
           </div>
           <div>
             {/*start*/}
-              <div className="d-flex">
-                <input onChange={handleSetOnChange} />
-                {
-                  gameOver? <ReloadButton reset={reset}/>: <button onClick={handleOnClick} disabled={gameOver}>Submit</button>
-                }
-                
+              <div id="input-container"  >
+                <p>Enter a 5 letter word below:</p>
+                <div className="d-flex">
+                    <input onChange={handleSetOnChange} />
+                    {
+                      gameOver? <ReloadButton reset={reset}/>: <button onClick={handleOnClick} disabled={gameOver}>Submit</button>
+                    }
+                </div>
+                <p>{actualWord}</p>
               </div>
             {/* end */}
           </div>
