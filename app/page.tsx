@@ -86,7 +86,6 @@ export default function Home() {
                       gameOver? <ReloadButton reset={reset}/>: <button onClick={handleOnClick} disabled={gameOver}>Submit</button>
                     }
                 </div>
-                <p>{actualWord}</p>
               </div>
             {/* end */}
           </div>
