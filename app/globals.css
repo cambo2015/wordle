@@ -24,3 +24,65 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+input{
+  background:white;
+  color:black;
+  border-radius: 8px;
+  margin:8px;
+ 
+}
+input:active{
+  border:none;
+}
+
+button{
+  background-color: green;
+  color: white;
+  border-radius: 8px;
+  padding:8px;
+
+}
+
+.d-flex{
+  display:flex;
+}
+.flex-column{
+  flex-direction: column;
+}
+
+.flex-row{
+  flex-direction: row;
+}
+
+.letter{
+  display: flex;
+  width:100px;
+  height:100px;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  margin:10px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.letter-correct{
+  background-color: green;
+  color: white;
+}
+
+.letter-incorrect{
+  background-color: red;
+  color:white;
+}
+
+.letter-close{
+  background-color: yellow;
+  color:black;
+}
+
+
+
+.letter-empty{
+  background-color: gray;
+}
