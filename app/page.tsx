@@ -37,9 +37,14 @@ export default function Home() {
 
   const handleOnClick =(e:MouseEvent<HTMLButtonElement>)=>{
 
-      if(currentInput.trim() === "" || numGuesses <=0){
+
+    const cw = currentInput.trim().toLowerCase()
+    const aw = actualWord.trim().toLowerCase()
+      if(cw === "" || numGuesses <=0){
         return
       }
+
+    
       if(currentInput.length < 5){
         alert("Word must be 5 characters in length!")
         return
@@ -49,10 +54,17 @@ export default function Home() {
         return 
       }
 
-      if(currentInput.trim().toLowerCase() === actualWord.toLowerCase()){
+      if(cw === aw){
         alert("You won!")
         setGameOver(true)
       }
+
+       if(numGuesses == 1 && aw != currentInput.toLowerCase()){
+        alert("You lost. The word was "+actualWord)
+        setGameOver(true)
+      }
+
+      
 
       const newNumGuessesAmount = numGuesses-1
       setGuesses([...guesses,currentInput])
