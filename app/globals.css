@@ -68,26 +68,51 @@ button{
   margin:8px;
   border-radius: 8px;
   font-weight: bold;
+   background-color: gray;
+  color: transparent;
+
+  animation-name: timeflip;
+  animation-duration: 0.6s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .letter-correct{
   background-color: green;
   color: white;
+  --final-bg: green;
+  --final-color: white;
 }
 
 .letter-incorrect{
   background-color: red;
   color:white;
+  --final-bg:red;
+  --final-color:white;
+  
 }
 
 .letter-close{
   background-color: yellow;
   color:black;
+  --final-bg:yellow;
+  --final-color:black;
+ 
+    
 }
 
 .letter-empty{
   background-color: gray;
+  display: block;
+   animation: timeflip 0.5s ease-in; 
+  animation-fill-mode: forwards;
+  --final-bg:gray;
+  --final-color:transparent;
+  
 }
+
 
 /* home page */
 #guesses-container{
@@ -101,7 +126,7 @@ button{
 
 #top-bar{
   width: 100%;
-  background-color: green !important;
+  background-color: green ;
   padding:8px;
   font-weight: bold;
   font-size: 20pt;
@@ -121,6 +146,32 @@ button{
 #input-container{
   margin-top: 0.5rem;
 }
+
+/* Animations */
+@keyframes timeflip{
+  0%{
+    background-color: gray;
+    transform:rotateX(0deg);
+    color:transparent;
+  }
+  25%{
+     transform:rotateX(90deg);
+     background-color: gray;
+     color:transparent;
+  }
+  50%{
+    transform: rotateX(90deg);
+    background-color: var(--final-bg); /*this gets the color specified for each letter color class*/
+    color: var(--final-color);
+  }
+  100%{
+    transform: rotateX(0deg);
+    background-color: var(--final-bg);
+    color: var(--final-color);
+  }
+}
+
+
 
 
 /*END*/

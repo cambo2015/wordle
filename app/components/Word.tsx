@@ -11,7 +11,13 @@ export default function Word({word="",actualWord=""}:WordProps){
     if((word === "" || word === '') && (actualWord === "" || actualWord === '')){
         const emptyArr = new Array(5).fill(0)
         return <div className="flex">
-            {emptyArr.map((x,i)=><Letter key={'empty-'+i} letter="A" status={LetterStatus.Empty}/>)}
+            {emptyArr.map((x,i)=><Letter 
+            key={'empty-'+i} 
+            letter="A" 
+            status={LetterStatus.Empty}
+            index={i}
+            />
+            )}
         </div>
     }
     
@@ -29,7 +35,12 @@ export default function Word({word="",actualWord=""}:WordProps){
         else{
             status = LetterStatus.Incorrect
         }
-        return <Letter key={"real-letter-"+i} letter={x} status={status} />
+        return <Letter 
+            key={"real-letter-"+i} 
+            letter={x} 
+            status={status}  
+            index={i}
+            />
     })}
     </div>
 
