@@ -45,23 +45,32 @@ export default function Home() {
   }
 
   return (
-    <div>
       <div>
-        {"guesses:"+numGuesses}
-       
-       {guesses.map((guess,index)=><Word word={guess} actualWord={actualWord} />)}
-       {/* show the remainder of the objects*/}
-       {emptyBoxes.map(x=><Word word="" actualWord=""/>)}
-        
-        
-        <div className="d-flex">
-           <input onChange={handleSetOnChange} />
-           <button onClick={handleOnClick} disabled={gameOver}> Submit</button>
+        <div id="top-bar">
+          <span>Wordle</span>
         </div>
+        <span className="chip">{"guesses: "+numGuesses}</span>
+       
+       <div id="guesses-container">
+          <div>
+           {guesses.map((guess,i)=><Word key={"actual-guess"+i} word={guess} actualWord={actualWord} />)}
+            {/* show the remainder of the objects*/}
+            {emptyBoxes.map((x,i)=><Word key={"guess-"+i} word="" actualWord=""/>)}
+          </div>
+          <div>{/*start*/}
+              <div className="d-flex">
+                <input onChange={handleSetOnChange} />
+                <button onClick={handleOnClick} disabled={gameOver}> Submit</button>
+              </div>
+            {/* end */}
+          </div>
+         
+        </div>
+      
+        
+        
+       
        
       </div>
-      
-    
-    </div>
   );
 }
