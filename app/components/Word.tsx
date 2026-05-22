@@ -36,16 +36,15 @@ export default function Word({word="",actualWord=""}:WordProps){
         }
         else if(actualArr.includes(wordArr[i]) ){//if included in array and 
             const letterBefore = sameLetterBefore(wordArr,letter,i)
-            const letterAfter = sameLetterAfter(wordArr,letter,i)
-            if(letterBefore === false && letterAfter===false){
+            const actualLetterCount = countLetterInWord(letter,actualArr)
+            //mark the first occurance
+            if(!letterBefore){
                 status = LetterStatus.Close
             }
-            else if(!letterBefore && letterAfter){
+            else if(actualLetterCount < 2){
                 status  = LetterStatus.Gray
             }
-            else if(countLetterInWord(letter,actualArr)<2){
-                status = LetterStatus.Gray
-            }else{
+            else{
                 status = LetterStatus.Close
             }
         }

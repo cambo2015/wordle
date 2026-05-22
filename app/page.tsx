@@ -8,8 +8,6 @@ import { initializeSounds } from "./audio";
 
 export default function Home() {
   
-  
-
   const maxNumGuesses = 6
   const [actualWord,setActualWord] = useState<string>("")
   const [numGuesses,setNumGuesses] = useState<number>(maxNumGuesses)
@@ -44,7 +42,6 @@ export default function Home() {
         return
       }
 
-    
       if(currentInput.length < 5){
         alert("Word must be 5 characters in length!")
         return
