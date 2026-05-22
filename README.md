@@ -38,3 +38,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 # Attribution
 The flip audio that was used was from freesound.org from the user cameronpride - "Page flip.wav". You can find it here: https://freesound.org/people/cameronpride/sounds/676674/
+
+# Icons used
+https://tabler.io/icons

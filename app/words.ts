@@ -1,3 +1,5 @@
+import { assert } from "console";
+
 export const fiveLetterWords:string[] = [
   "apple","beach","brain","bread","brick","brown","chair","cloud","dance","dream",
   "eagle","earth","flame","fruit","giant","grape","green","happy","heart","house",
@@ -74,3 +76,45 @@ export const addToPreviousWords = (newWord:string)=>{
 
   localStorage.setItem(key,JSON.stringify(obj))
 }
+
+
+export const countLetterInWord = (letter:string,word:string[])=>{
+  return word.filter(x=>x == letter).length
+}
+
+//
+export const sameLetterBefore = (arr: string[], letter: string, searchLetterIndex: number) => {
+
+    //make sure search letter index is not greater than the array length
+    if (searchLetterIndex > arr.length) {
+        return false
+    }
+    for (let i = searchLetterIndex - 1; i >= 0; i--) {
+        const l = arr[i]
+        if (l == letter) {
+            return true
+        }
+    }
+    return false;
+}
+
+export const sameLetterAfter = (arr: string[], letter: string, searchLetterIndex: number) => {
+
+    let count = 0
+    if (searchLetterIndex > arr.length) {
+        return false
+    }
+
+    for (let i = searchLetterIndex; i < arr.length; i++) { //search the current index and above
+        const l = arr[i]
+        if (l == letter) {
+            //if there are any letters after starting position
+            if (count > 0 && i > searchLetterIndex) {
+                return true
+            }
+            count++;
+        }
+    }
+    return false
+}
+

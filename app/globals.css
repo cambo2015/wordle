@@ -3,6 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --green:var(--color-green-500);
+  --yellow:var(--color-yellow-300);
+  --red:var(--color-red-500);
+  --gray:var(--color-gray-500);
+  --white:var(--color-gray-100);
+
+  --yellow-text:var(--color-yellow-900);
+  --green-text:var(--color-green-900);
+  --red-text:var(--color-red-900);
 }
 
 @theme inline {
@@ -24,6 +33,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  max-height: 100vh;
 }
 input{
   background:white;
@@ -37,8 +47,8 @@ input:active{
 }
 
 button{
-  background-color: green;
-  color: white;
+  background-color: var(--green);
+  color: var(--white);
   border-radius: 8px;
   padding:8px;
 
@@ -68,7 +78,7 @@ button{
   margin:8px;
   border-radius: 8px;
   font-weight: bold;
-   background-color: gray;
+   background-color: var(--gray);
   color: transparent;
 
   animation-name: timeflip;
@@ -80,39 +90,41 @@ button{
 }
 
 .letter-correct{
-  background-color: green;
-  color: white;
-  --final-bg: green;
-  --final-color: white;
+  background-color: var(--green);
+  color: black;
+  --final-bg: var(--green);
+  --final-color: black;
 }
 
 .letter-incorrect{
-  background-color: red;
-  color:white;
-  --final-bg:red;
-  --final-color:white;
-  
+  background-color: var(--red) !important;
+  color:var(--white);
+  --final-bg:var(--red);
+  --final-color:var(--white);
 }
 
 .letter-close{
-  background-color: yellow;
+  background-color: var(--yellow);
   color:black;
-  --final-bg:yellow;
+  --final-bg:var(--yellow);
   --final-color:black;
- 
-    
 }
 
 .letter-empty{
-  background-color: gray;
+  background-color: var(--gray);
   display: block;
    animation: timeflip 0.5s ease-in; 
   animation-fill-mode: forwards;
-  --final-bg:gray;
-  --final-color:transparent;
-  
+  --final-bg:var(--gray);
+  --final-color:var(--white);
 }
 
+.letter-gray{
+  background-color: var(--gray);
+  color:var(--white);
+  --final-bg:var(--gray);
+  --final-color:var(--white);
+}
 
 /* home page */
 #guesses-container{
@@ -126,14 +138,15 @@ button{
 
 #top-bar{
   width: 100%;
-  background-color: green ;
+  background-color: var(--color-green-800);
   padding:8px;
   font-weight: bold;
   font-size: 20pt;
+  color:var(--color-green-100)
 }
 
 .chip{
-  background-color: green;
+  background-color: var(--green);
   padding:8px;
   margin: 10 auto auto auto;
   color:white;

@@ -30,6 +30,7 @@ export default function Home() {
       setEmptyBoxes(new Array(maxNumGuesses).fill(0))
       setGameOver(false)
       setActualWord(getWord())
+     
   }
 
   const handleSetOnChange = (e:ChangeEvent<HTMLInputElement>)=>{
