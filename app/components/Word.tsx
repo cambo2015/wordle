@@ -10,9 +10,10 @@ type WordProps = {
 
 export default function Word({word="",actualWord=""}:WordProps){
 
+    const numberLetters = 5
     // this prints out an empty word (single row)
     if((word === "" || word === '') && (actualWord === "" || actualWord === '')){
-        const emptyArr = new Array(5).fill(0)
+        const emptyArr = new Array(numberLetters).fill(0)
         return <div className="flex">
             {emptyArr.map((x,i)=><Letter 
             key={'empty-'+i} 
@@ -59,6 +60,5 @@ export default function Word({word="",actualWord=""}:WordProps){
             />
     })}
     </div>
-
 }
     

@@ -20,7 +20,6 @@ export default function Letter({letter,status,index}:LetterProps){
     
     const baseClass = 'letter'
 
-   
     const handleAnimation =()=>{
         if(status != LetterStatus.Empty){
             playFlip()
